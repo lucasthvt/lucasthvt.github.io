@@ -2,38 +2,54 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio – Lucas THEVENET</title>
-  <style>
-    body { font-family: Arial, sans-serif; max-width: 800px; margin: 40px auto; padding: 0 20px; background: #f5f5f5; color: #333; }
-    h1 { color: #2c3e50; }
-    h2 { border-bottom: 2px solid #3498db; padding-bottom: 5px; }
-    .projet { background: white; padding: 15px; margin: 10px 0; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-    a { color: #3498db; }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <h1>Lucas THEVENET</h1>
-  <p><strong>Formation :</strong> BTS1 SIO SLAM — Lycée Simone Weil</p>
-  <p>
-    Étudiant en BTS SIO option SLAM. Je développe des applications web
-    et apprends les bases du développement logiciel. Passionné par le developpement web.
-    Cette page regroupe mes projets réalisés durant le semestre.
-  </p>
+  <header>
+    <div class="container">
+      <h1>Lucas THEVENET</h1>
+      <p class="subtitle">BTS1 SIO SLAM — Lycée Simone Weil</p>
+    </div>
+  </header>
 
-  <h2>Mes projets</h2>
+  <main class="container">
 
-  <div class="projet">
-    <h3>Foot Stats</h3>
-    <p>Site qui regroupe les statistiques de chaque équipe du top 5 des ligues europpénnes.</p>
-    <a href="https://github.com/lucasthvt/Foot-Stats" target="_blank">Voir le dépôt →</a>
-  </div>
+    <section class="about">
+      <h2>À propos</h2>
+      <p>
+        Étudiant en BTS SIO option SLAM. Je développe des applications web
+        et apprends les bases du développement logiciel. Passionné par le développement web.
+        Cette page regroupe mes projets réalisés durant le semestre.
+      </p>
+    </section>
 
-  <div class="projet">
-    <h3>Nom du projet 2</h3>
-    <p>Description en une phrase de ce que fait ce projet.</p>
-    <a href="https://github.com/[ton-username]/[nom-du-repo]" target="_blank">Voir le dépôt →</a>
-  </div>
+    <section>
+      <h2>Mes projets</h2>
+      <div class="projets">
+
+        <div class="projet">
+          <h3>Foot Stats</h3>
+          <p>Site qui regroupe les statistiques de chaque équipe du top 5 des ligues européennes.</p>
+          <a href="https://github.com/lucasthvt/Foot-Stats" target="_blank">Voir le dépôt →</a>
+        </div>
+
+        <div class="projet">
+          <h3>Nom du projet 2</h3>
+          <p>Description en une phrase de ce que fait ce projet.</p>
+          <a href="https://github.com/[ton-username]/[nom-du-repo]" target="_blank">Voir le dépôt →</a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Lucas THEVENET</p>
+  </footer>
 
 </body>
 </html>
