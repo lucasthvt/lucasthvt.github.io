@@ -3,65 +3,193 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio – Lucas THEVENET</title>
+  <title>Lucas Thevenet — Portfolio | Stage développeur full-stack (BTS SIO SLAM)</title>
+  <meta name="description" content="Lucas Thevenet, étudiant en BTS SIO option SLAM, cherche un stage de développement web / full-stack du 11 janvier au 12 février 2027. Découvrez Rivalys et mes projets.">
+  <meta name="author" content="Lucas Thevenet">
+  <link rel="canonical" href="https://lucasthvt.github.io/">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta name="color-scheme" content="light dark">
+
+  <!-- Open Graph / partage -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Lucas Thevenet — Portfolio">
+  <meta property="og:title" content="Lucas Thevenet — Stage développeur full-stack (BTS SIO SLAM)">
+  <meta property="og:description" content="Étudiant en BTS SIO option SLAM, à la recherche d'un stage du 11 janvier au 12 février 2027. Étude de cas : Rivalys.">
+  <meta property="og:url" content="https://lucasthvt.github.io/">
+  <meta property="og:image" content="https://lucasthvt.github.io/og-image.png">
+  <meta property="og:image:alt" content="Lucas Thevenet, étudiant BTS SIO SLAM, recherche un stage de développement full-stack">
+  <meta name="twitter:card" content="summary_large_image">
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
 
-  <header>
+  <nav class="site-nav" aria-label="Navigation principale">
     <div class="container">
-      <h1>Lucas THEVENET</h1>
-      <p class="subtitle">BTS2 SIO option SLAM — Lycée Simone Weil</p>
-    </div>
-  </header>
-
-  <main class="container">
-
-    <section class="about">
-      <h2>À propos</h2>
-      <p>
-        Étudiant en BTS2 SIO option SLAM, je m'intéresse au développement web
-        et aux applications intégrant de l'intelligence artificielle. J'aime
-        concevoir des projets complets, du front-end à la mise en production.
-        Je recherche un <strong>stage en développement d'applications</strong>
-        (web ou logiciel) pour approfondir mes compétences et découvrir le
-        monde professionnel.
-      </p>
-    </section>
-
-    <section class="about">
-      <h2>Compétences techniques</h2>
+      <a class="brand" href="#accueil">Lucas Thevenet</a>
       <ul>
-        <li><strong>Langages :</strong> Python, HTML, CSS, JavaScript, SQL</li>
-        <li><strong>Frameworks :</strong> FastAPI</li>
-        <li><strong>Outils :</strong> Docker, Git, GitHub, Ollama</li>
-        <li><strong>IA :</strong> modèles de langage locaux (Qwen3, Qwen2.5)</li>
+        <li><a href="#rivalys">Rivalys</a></li>
+        <li><a href="#projets">Projets</a></li>
+        <li><a href="#competences">Compétences</a></li>
+        <li><a href="#parcours">Parcours</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
+    </div>
+  </nav>
+
+  <main id="contenu">
+
+    <header class="hero" id="accueil">
+      <div class="container">
+        <h1>Lucas Thevenet</h1>
+        <p class="lead">Étudiant en BTS SIO option SLAM (2<sup>e</sup> année) au lycée Simone Weil, je conçois des applications web de bout en bout.</p>
+        <p class="status"><strong>À la recherche d'un stage de 5 semaines</strong>, du 11 janvier au 12 février 2027, en développement web / full-stack (SLAM).</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="CV_Lucas_Thevenet.pdf" download>Télécharger mon CV</a>
+          <a class="btn" href="https://github.com/lucasthvt" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/in/lucas-thevenet-562054393/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href="mailto:lucas.thevenet.pro@gmail.com">Email</a>
+        </div>
+      </div>
+    </header>
+
+    <section id="rivalys" aria-labelledby="rivalys-titre">
+      <div class="container case">
+        <h2 id="rivalys-titre">Rivalys — étude de cas</h2>
+        <p><strong>Rivalys</strong> est un outil payant qui compare un SaaS à son plus gros concurrent, à partir de deux URL.</p>
+        <ul class="tags" aria-label="Technologies">
+          <li>Next.js 16</li><li>React 19</li><li>TypeScript</li><li>Tailwind CSS</li><li>Supabase (Postgres, Auth)</li><li>Row Level Security</li><li>Stripe</li><li>API Claude</li><li>Python</li>
+        </ul>
+
+        <div class="card">
+          <h3>Ma solution</h3>
+          <p>À partir de deux URL, Rivalys relève <strong>4 familles de faits</strong> : tarification, positionnement, avis publics et présence sociale. Il applique <strong>9 règles de détection</strong> classées par priorité, calcule un <strong>score sur 100</strong> et transforme chaque écart en <strong>tâche</strong> à réaliser.</p>
+
+          <h3>Les choix techniques</h3>
+          <ul>
+            <li><strong>Row Level Security :</strong> chaque table est protégée par des politiques RLS filtrées sur l'identité de l'utilisateur. Chacun ne voit que ses propres données, la règle étant appliquée au niveau de la base.</li>
+            <li><strong>Règles de détection codées en dur :</strong> les écarts ne sont pas générés librement par un modèle de langage. Chaque action proposée découle d'une comparaison factuelle et explicite. L'IA sert uniquement à extraire les données des pages, côté serveur.</li>
+            <li><strong>Un crawler Python dédié</strong> pour récupérer les pages d'accueil et de tarifs, avec rejet des adresses privées (protection SSRF) et revalidation à chaque redirection.</li>
+            <li><strong>Paiement Stripe</strong> : signature des webhooks vérifiée, et colonnes de facturation non modifiables depuis le navigateur, pour qu'un compte ne puisse pas s'attribuer un abonnement payant.</li>
+            <li><strong>Hébergement :</strong> déploiement sur Vercel, connecté au dépôt et à Supabase.</li>
+          </ul>
+
+          <h3>Les difficultés rencontrées</h3>
+          <p>Le développement en local s'est déroulé sans blocage majeur. La vraie difficulté a été le <strong>passage du local à la production</strong>, plus complexe que prévu : il faut faire fonctionner ensemble plusieurs services (nom de domaine, certificat TLS, hébergement Vercel, base Supabase) alors que tout marchait déjà sur ma machine.</p>
+
+          <h3>Ce que j'ai appris</h3>
+          <p>Rivalys m'a fait parcourir le déroulement complet d'un SaaS web, de A à Z :</p>
+          <ul>
+            <li>développer en local, tester, ajuster les prompts, puis mettre en production ;</li>
+            <li>acheter un nom de domaine et mettre en place le certificat TLS ;</li>
+            <li>connecter l'application à Vercel (hébergement) et à Supabase (base de données et authentification).</li>
+          </ul>
+
+          <h3>Mon rôle</h3>
+          <p>Projet réalisé en solo, de la conception à la mise en production.</p>
+        </div>
+
+        <p class="actions" style="margin-top:1.25rem"><a class="btn btn-primary" href="https://rivalys.com" target="_blank" rel="noopener">Voir Rivalys en ligne</a>
+        <a class="btn" href="https://github.com/lucasthvt/rivalys" target="_blank" rel="noopener">Voir le code<span class="sr-only"> de Rivalys</span></a></p>
+      </div>
     </section>
 
-    <section>
-      <h2>Mes projets</h2>
-      <div class="projets">
-
-        <div class="projet">
-          <h3>TriSupport IA</h3>
-          <p>Application qui classe automatiquement des demandes de support informatique en JSON (catégorie, priorité, résumé). Utilise un modèle de langage local (Ollama, Qwen3 8B), conteneurisée avec Docker Compose, exposée via un tunnel HTTPS. 12 cas de test, 100 % de réussite avec le modèle retenu.</p>
-          <a href="https://github.com/lucasthvt/projet-ia-lucas" target="_blank">Voir le dépôt →</a>
+    <section id="projets" aria-labelledby="projets-titre">
+      <div class="container">
+        <h2 id="projets-titre">Autres projets</h2>
+        <div class="grid">
+          <article class="card">
+            <h3>TriSupport IA</h3>
+            <ul class="tags" aria-label="Technologies">
+              <li>Python</li><li>FastAPI</li><li>Docker Compose</li><li>Ollama (Qwen3 8B)</li><li>Cloudflare Tunnel</li>
+            </ul>
+            <p>Application qui classe automatiquement des demandes de support informatique en JSON (catégorie, priorité, résumé), avec un modèle de langage local. Conteneurisée avec Docker Compose et exposée en HTTPS via un tunnel. 12 cas de test, 100 % de réussite avec le modèle retenu.</p>
+            <a class="btn" href="https://github.com/lucasthvt/projet-ia-lucas" target="_blank" rel="noopener">Voir le code<span class="sr-only"> de TriSupport IA</span></a>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="about">
-      <h2>Contact</h2>
-      <p>Email : <a href="mailto:ton.email@exemple.com">lucas.thevenet.pro@gmail.com</a></p>
-      <p><a href="CV_Lucas_Thevenet.pdf" download>Télécharger mon CV (PDF)</a></p>
+    <section id="competences" aria-labelledby="competences-titre">
+      <div class="container">
+        <h2 id="competences-titre">Compétences</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Développement web</h3>
+            <ul class="tags"><li>HTML / CSS</li><li>Symfony</li><li>FastAPI / API REST</li></ul>
+          </div>
+          <div class="card">
+            <h3>Langages et données</h3>
+            <ul class="tags"><li>Python</li><li>SQL / bases de données</li></ul>
+          </div>
+          <div class="card">
+            <h3>IA</h3>
+            <ul class="tags"><li>Ollama / LLM</li><li>Prompt engineering</li><li>Intégration et déploiement d'IA</li></ul>
+          </div>
+          <div class="card">
+            <h3>Outils, déploiement et sécurité</h3>
+            <ul class="tags"><li>Git / GitHub</li><li>Docker</li><li>Cloudflare Tunnel</li><li>OWASP</li></ul>
+          </div>
+          <div class="card">
+            <h3>Langues</h3>
+            <ul class="tags"><li>Français : langue natale</li><li>Anglais : B2</li><li>Espagnol : B2</li></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="parcours" aria-labelledby="parcours-titre">
+      <div class="container">
+        <h2 id="parcours-titre">Parcours</h2>
+
+        <h3>Formation</h3>
+        <ul class="timeline">
+          <li><span class="date">2025 – aujourd'hui</span><strong>BTS SIO option SLAM</strong>, lycée Simone Weil, Saint-Priest-en-Jarez</li>
+          <li><span class="date">2022 – 2025</span><strong>Baccalauréat STI2D, mention assez bien</strong>, lycée Étienne Mimard, Saint-Étienne</li>
+          <li><span class="date">2018 – 2022</span>Collège Pierre et Marie Curie, La Talaudière</li>
+        </ul>
+
+        <h3>Stage en développement</h3>
+        <ul class="timeline">
+          <li><span class="date">Mai – juin 2026</span><strong>Stagiaire en développement web, CTI Saint-Étienne</strong>
+            <ul>
+              <li>Création du site web du rapport d'activité 2025</li>
+              <li>Création d'applications web pour les employés</li>
+              <li>Apprentissage de Symfony</li>
+            </ul>
+          </li>
+        </ul>
+
+        <h3>Autres expériences</h3>
+        <ul class="timeline">
+          <li><span class="date">Août – septembre 2025</span><strong>Équipier polyvalent</strong>, McDonald's Sorbiers</li>
+          <li><span class="date">Août 2024</span><strong>Employé municipal</strong>, mairie de La Talaudière (espaces verts, nettoyage des espaces publics)</li>
+          <li><span class="date">Décembre 2021</span><strong>Stage d'observation d'une semaine</strong>, pâtisserie Clémentine</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-titre">
+      <div class="container">
+        <h2 id="contact-titre">Contact</h2>
+        <p>Je recherche un stage de développement web / full-stack du 11 janvier au 12 février 2027. N'hésitez pas à m'écrire.</p>
+        <ul>
+          <li>Email : <a href="mailto:lucas.thevenet.pro@gmail.com">lucas.thevenet.pro@gmail.com</a></li>
+          <li>LinkedIn : <a href="https://www.linkedin.com/in/lucas-thevenet-562054393/" target="_blank" rel="noopener">Lucas Thevenet</a></li>
+          <li>GitHub : <a href="https://github.com/lucasthvt" target="_blank" rel="noopener">lucasthvt</a></li>
+        </ul>
+        <p><a class="btn btn-primary" href="CV_Lucas_Thevenet.pdf" download>Télécharger mon CV (PDF)</a></p>
+      </div>
     </section>
 
   </main>
 
   <footer>
-    <p>© 2026 Lucas THEVENET</p>
+    <div class="container">
+      <p>© 2026 Lucas Thevenet</p>
+    </div>
   </footer>
-
 </body>
 </html>

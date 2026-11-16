@@ -1,45 +1,34 @@
-# Portfolio — Lucas THEVENET
+# Portfolio — Lucas Thevenet
 
-Page professionnelle de Lucas THEVENET, étudiant en BTS2 SIO option SLAM au Lycée Simone Weil.
+Portfolio personnel publié avec GitHub Pages : https://lucasthvt.github.io
 
-🔗 **Page en ligne :** https://lucasthvt.github.io
+Étudiant en BTS SIO option SLAM (2ᵉ année, lycée Simone Weil), à la recherche d'un stage de développement web / full-stack du 11 janvier au 12 février 2027.
 
 ## Contenu
 
-- Présentation et recherche de stage
-- Compétences techniques
-- Projet :
-  - **TriSupport IA** — application de tri automatique de demandes de support (Python, FastAPI, Docker, Ollama)
-- Contact et CV téléchargeable
+- Accroche, liens GitHub / LinkedIn / email, CV téléchargeable
+- Étude de cas : Rivalys
+- Autre projet : TriSupport IA
+- Compétences, parcours, contact
 
-## Technologies du projet présenté
+## Choix techniques
 
-**TriSupport IA :**
-- Python, FastAPI
-- Docker, Docker Compose
-- Ollama (modèle de langage local Qwen3 8B)
-- Cloudflare Tunnel (exposition HTTPS)
-- HTML / CSS / JavaScript (interface)
+HTML et CSS purs, sans framework, sans JavaScript, sans requête externe (polices système). Page unique, responsive, thème clair/sombre selon les préférences du système, balises meta et Open Graph, lien d'évitement et focus visible.
 
-**Page portfolio :**
-- HTML5 / CSS3
-- GitHub Pages (hébergement statique)
-
-## Structure du dépôt
-
-```
-.
-├── index.html      # Page principale du portfolio
-├── style.css       # Feuille de styles
-├── cv.pdf          # CV téléchargeable (si présent)
-└── README.md       # Documentation du dépôt
-```
-
-### Détail des fichiers
+## Structure
 
 | Fichier | Rôle |
 |---|---|
-| `index.html` | Page d'accueil : présentation, compétences, projets, contact |
-| `style.css` | Mise en forme (couleurs, layout, cartes projets) |
-| `cv.pdf` | CV au format PDF, téléchargeable depuis la page |
-| `README.md` | Ce fichier : description du dépôt et de son contenu |
+| `index.html` | Page unique |
+| `style.css` | Styles |
+| `favicon.svg` | Icône |
+| `og-image.png` | Image d'aperçu pour le partage (1200×630) |
+| `CV_Lucas_Thevenet.pdf` | CV téléchargeable |
+
+## Développement local
+
+Ouvrir `index.html` dans un navigateur, ou lancer `python3 -m http.server` puis aller sur http://localhost:8000.
+
+## Reste à faire
+
+Les éléments manquants sont signalés dans la page par des marqueurs jaunes « TODO » : `grep -n 'class="todo"' index.html`.
