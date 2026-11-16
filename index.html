@@ -60,10 +60,7 @@
         <h2 id="rivalys-titre">Rivalys — étude de cas</h2>
         <p><strong>Rivalys</strong> est un outil payant qui compare un SaaS à son plus gros concurrent, à partir de deux URL.</p>
         <ul class="tags" aria-label="Technologies">
-          <li>Row Level Security</li>
-          <li><span class="todo">TODO : front</span></li>
-          <li><span class="todo">TODO : base de données</span></li>
-          <li><span class="todo">TODO : hébergement</span></li>
+          <li>Next.js 16</li><li>React 19</li><li>TypeScript</li><li>Tailwind CSS</li><li>Supabase (Postgres, Auth)</li><li>Row Level Security</li><li>Stripe</li><li>API Claude</li><li>Python</li>
         </ul>
 
         <div class="card">
@@ -75,8 +72,11 @@
 
           <h3>Les choix techniques</h3>
           <ul>
-            <li><strong>Sécurité par Row Level Security :</strong> chaque utilisateur ne voit que ses propres données, la règle étant appliquée au niveau de la base.</li>
-            <li><span class="todo">TODO : stack détaillée (front, base de données, hébergement) et pourquoi ces choix</span></li>
+            <li><strong>Row Level Security :</strong> chaque table est protégée par des politiques RLS filtrées sur l'identité de l'utilisateur. Chacun ne voit que ses propres données, la règle étant appliquée au niveau de la base.</li>
+            <li><strong>Règles de détection codées en dur :</strong> les écarts ne sont pas générés librement par un modèle de langage. Chaque action proposée découle d'une comparaison factuelle et explicite. L'IA sert uniquement à extraire les données des pages, côté serveur.</li>
+            <li><strong>Un crawler Python dédié</strong> pour récupérer les pages d'accueil et de tarifs, avec rejet des adresses privées (protection SSRF) et revalidation à chaque redirection.</li>
+            <li><strong>Paiement Stripe</strong> : signature des webhooks vérifiée, et colonnes de facturation non modifiables depuis le navigateur, pour qu'un compte ne puisse pas s'attribuer un abonnement payant.</li>
+            <li><strong>Hébergement :</strong> <span class="todo">TODO : confirmer Vercel (le dépôt indique « déploiement visé : Vercel »)</span></li>
           </ul>
 
           <h3>Les difficultés rencontrées</h3>
@@ -89,7 +89,8 @@
           <p><span class="todo">TODO : seul ou en équipe, ce que tu as fait</span></p>
         </div>
 
-        <p style="margin-top:1.25rem"><a class="btn btn-primary" href="https://rivalys.com" target="_blank" rel="noopener">Voir Rivalys en ligne</a></p>
+        <p class="actions" style="margin-top:1.25rem"><a class="btn btn-primary" href="https://rivalys.com" target="_blank" rel="noopener">Voir Rivalys en ligne</a>
+        <a class="btn" href="https://github.com/lucasthvt/rivalys" target="_blank" rel="noopener">Voir le code<span class="sr-only"> de Rivalys</span></a></p>
       </div>
     </section>
 
