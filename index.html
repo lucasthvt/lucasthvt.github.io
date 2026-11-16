@@ -76,17 +76,22 @@
             <li><strong>Règles de détection codées en dur :</strong> les écarts ne sont pas générés librement par un modèle de langage. Chaque action proposée découle d'une comparaison factuelle et explicite. L'IA sert uniquement à extraire les données des pages, côté serveur.</li>
             <li><strong>Un crawler Python dédié</strong> pour récupérer les pages d'accueil et de tarifs, avec rejet des adresses privées (protection SSRF) et revalidation à chaque redirection.</li>
             <li><strong>Paiement Stripe</strong> : signature des webhooks vérifiée, et colonnes de facturation non modifiables depuis le navigateur, pour qu'un compte ne puisse pas s'attribuer un abonnement payant.</li>
-            <li><strong>Hébergement :</strong> <span class="todo">TODO : confirmer Vercel (le dépôt indique « déploiement visé : Vercel »)</span></li>
+            <li><strong>Hébergement :</strong> déploiement sur Vercel, connecté au dépôt et à Supabase.</li>
           </ul>
 
           <h3>Les difficultés rencontrées</h3>
           <p><span class="todo">TODO : 2 ou 3 difficultés réelles et comment tu les as résolues</span></p>
 
           <h3>Ce que j'ai appris</h3>
-          <p><span class="todo">TODO : ce que ce projet t'a appris</span></p>
+          <p>Rivalys m'a fait parcourir le déroulement complet d'un SaaS web, de A à Z :</p>
+          <ul>
+            <li>développer en local, tester, ajuster les prompts, puis mettre en production ;</li>
+            <li>acheter un nom de domaine et mettre en place le certificat TLS ;</li>
+            <li>connecter l'application à Vercel (hébergement) et à Supabase (base de données et authentification).</li>
+          </ul>
 
           <h3>Mon rôle</h3>
-          <p><span class="todo">TODO : seul ou en équipe, ce que tu as fait</span></p>
+          <p>Projet réalisé en solo, de la conception à la mise en production.</p>
         </div>
 
         <p class="actions" style="margin-top:1.25rem"><a class="btn btn-primary" href="https://rivalys.com" target="_blank" rel="noopener">Voir Rivalys en ligne</a>
@@ -145,7 +150,7 @@
         <h3>Formation</h3>
         <ul class="timeline">
           <li><span class="date">2025 – aujourd'hui</span><strong>BTS SIO option SLAM</strong>, lycée Simone Weil, Saint-Priest-en-Jarez</li>
-          <li><span class="date">2022 – 2025</span><strong>Lycée, filière STI2D</strong>, lycée Étienne Mimard, Saint-Étienne <span class="todo">TODO : bac obtenu ? (mention à ajouter)</span></li>
+          <li><span class="date">2022 – 2025</span><strong>Baccalauréat STI2D, mention assez bien</strong>, lycée Étienne Mimard, Saint-Étienne</li>
           <li><span class="date">2018 – 2022</span>Collège Pierre et Marie Curie, La Talaudière</li>
         </ul>
 
@@ -166,7 +171,6 @@
           <li><span class="date">Août 2024</span><strong>Employé municipal</strong>, mairie de La Talaudière (espaces verts, nettoyage des espaces publics)</li>
           <li><span class="date">Décembre 2021</span><strong>Stage d'observation d'une semaine</strong>, pâtisserie Clémentine</li>
         </ul>
-        <p><span class="todo">TODO : passeport de stage — dis-moi quoi y mettre ou je retire cette mention</span></p>
       </div>
     </section>
 
