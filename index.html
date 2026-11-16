@@ -3,65 +3,66 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio – Lucas THEVENET</title>
+  <title>Lucas Thevenet — Portfolio | Stage développeur full-stack (BTS SIO SLAM)</title>
+  <meta name="description" content="Lucas Thevenet, étudiant en BTS SIO option SLAM, cherche un stage de développement web / full-stack du 11 janvier au 12 février 2027. Découvrez Rivalys et mes projets.">
+  <meta name="author" content="Lucas Thevenet">
+  <link rel="canonical" href="https://lucasthvt.github.io/">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <meta name="color-scheme" content="light dark">
+
+  <!-- Open Graph / partage -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Lucas Thevenet — Portfolio">
+  <meta property="og:title" content="Lucas Thevenet — Stage développeur full-stack (BTS SIO SLAM)">
+  <meta property="og:description" content="Étudiant en BTS SIO option SLAM, à la recherche d'un stage du 11 janvier au 12 février 2027. Étude de cas : Rivalys.">
+  <meta property="og:url" content="https://lucasthvt.github.io/">
+  <meta property="og:image" content="https://lucasthvt.github.io/og-image.png">
+  <meta property="og:image:alt" content="Lucas Thevenet, étudiant BTS SIO SLAM, recherche un stage de développement full-stack">
+  <meta name="twitter:card" content="summary_large_image">
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
 
-  <header>
+  <nav class="site-nav" aria-label="Navigation principale">
     <div class="container">
-      <h1>Lucas THEVENET</h1>
-      <p class="subtitle">BTS2 SIO option SLAM — Lycée Simone Weil</p>
-    </div>
-  </header>
-
-  <main class="container">
-
-    <section class="about">
-      <h2>À propos</h2>
-      <p>
-        Étudiant en BTS2 SIO option SLAM, je m'intéresse au développement web
-        et aux applications intégrant de l'intelligence artificielle. J'aime
-        concevoir des projets complets, du front-end à la mise en production.
-        Je recherche un <strong>stage en développement d'applications</strong>
-        (web ou logiciel) pour approfondir mes compétences et découvrir le
-        monde professionnel.
-      </p>
-    </section>
-
-    <section class="about">
-      <h2>Compétences techniques</h2>
+      <a class="brand" href="#accueil">Lucas Thevenet</a>
       <ul>
-        <li><strong>Langages :</strong> Python, HTML, CSS, JavaScript, SQL</li>
-        <li><strong>Frameworks :</strong> FastAPI</li>
-        <li><strong>Outils :</strong> Docker, Git, GitHub, Ollama</li>
-        <li><strong>IA :</strong> modèles de langage locaux (Qwen3, Qwen2.5)</li>
+        <li><a href="#rivalys">Rivalys</a></li>
+        <li><a href="#projets">Projets</a></li>
+        <li><a href="#competences">Compétences</a></li>
+        <li><a href="#parcours">Parcours</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
-    </section>
+    </div>
+  </nav>
 
-    <section>
-      <h2>Mes projets</h2>
-      <div class="projets">
+  <main id="contenu">
 
-        <div class="projet">
-          <h3>TriSupport IA</h3>
-          <p>Application qui classe automatiquement des demandes de support informatique en JSON (catégorie, priorité, résumé). Utilise un modèle de langage local (Ollama, Qwen3 8B), conteneurisée avec Docker Compose, exposée via un tunnel HTTPS. 12 cas de test, 100 % de réussite avec le modèle retenu.</p>
-          <a href="https://github.com/lucasthvt/projet-ia-lucas" target="_blank">Voir le dépôt →</a>
+    <header class="hero" id="accueil">
+      <div class="container">
+        <h1>Lucas Thevenet</h1>
+        <p class="lead">Étudiant en BTS SIO option SLAM (2<sup>e</sup> année) au lycée Simone Weil, je conçois des applications web de bout en bout.</p>
+        <p class="status"><strong>À la recherche d'un stage de 5 semaines</strong>, du 11 janvier au 12 février 2027, en développement web / full-stack (SLAM).</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="CV_Lucas_Thevenet.pdf" download>Télécharger mon CV</a>
+          <a class="btn" href="https://github.com/lucasthvt" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/in/lucas-thevenet-562054393/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href="mailto:lucas.thevenet.pro@gmail.com">Email</a>
         </div>
       </div>
-    </section>
+    </header>
 
-    <section class="about">
-      <h2>Contact</h2>
-      <p>Email : <a href="mailto:ton.email@exemple.com">lucas.thevenet.pro@gmail.com</a></p>
-      <p><a href="CV_Lucas_Thevenet.pdf" download>Télécharger mon CV (PDF)</a></p>
-    </section>
+    <!-- SECTIONS -->
 
   </main>
 
   <footer>
-    <p>© 2026 Lucas THEVENET</p>
+    <div class="container">
+      <p>© 2026 Lucas Thevenet</p>
+    </div>
   </footer>
-
 </body>
 </html>
