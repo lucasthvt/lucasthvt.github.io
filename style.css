@@ -219,3 +219,8 @@ th { background: var(--bg); }
 .pager small { display: block; color: var(--muted); }
 .pager .next { text-align: right; }
 .note { background: var(--surface); border: 1px dashed var(--border); border-radius: var(--radius); padding: .8rem 1.1rem; color: var(--muted); }
+
+/* ===== Aperçu intégré d'une maquette ===== */
+.preview { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--surface); }
+.preview iframe { display: block; width: 100%; height: 70vh; min-height: 28rem; border: 0; background: #fff; }
+.preview-bar { display: flex; flex-wrap: wrap; gap: .5rem 1rem; align-items: center; justify-content: space-between; padding: .6rem 1rem; border-bottom: 1px solid var(--border); font-size: .9rem; color: var(--muted); }

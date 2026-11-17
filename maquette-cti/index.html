@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CTI XXXX — Rapport d'Activité 2016</title>
+<meta name="description" content="Centre de Traitement Informatique de XXXX — Assurance Maladie. Découvrez nos missions, nos résultats et notre engagement au service du réseau de santé français.">
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@300;400;500;700;900&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root {
+  --navy:  #003775;
+  --blue:  #005BAA;
+  --teal:  #00A8BF;
+  --teal2: #00C8E0;
+  --white: #FFFFFF;
+  --ice:   #F4F8FD;
+  --ink:   #0D1B2A;
+  --mid:   #4A6080;
+  --muted: #8FA3BB;
+  --line:  rgba(0,55,117,0.10);
+  --fd: 'Epilogue', sans-serif;
+  --fb: 'Inter', sans-serif;
+}
+
+html { scroll-behavior:smooth; }
+body { background:var(--white); color:var(--ink); font-family:var(--fb); overflow-x:hidden; cursor:none; }
+
+#cur  { position:fixed;width:9px;height:9px;background:var(--teal);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s; }
+#cur2 { position:fixed;width:32px;height:32px;border:1.5px solid var(--teal);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);opacity:.35; }
+
+/* NAV */
+nav {
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 2.5rem;
+  background:rgba(0,55,117,0.95);backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(255,255,255,0.1);
+  transition:box-shadow .3s;
+}
+nav.raised { box-shadow:0 2px 24px rgba(0,0,0,.2); }
+.nav-brand { display:flex;align-items:center;gap:.8rem;text-decoration:none; }
+.nav-badge { background:#fff;color:var(--navy);font-family:var(--fd);font-weight:900;font-size:.72rem;letter-spacing:.08em;padding:.3rem .6rem;border-radius:4px; }
+.nav-name { font-family:var(--fd);font-weight:700;font-size:.85rem;color:#fff;letter-spacing:.02em; }
+.nav-name span { color:var(--teal2); }
+.nav-links { display:flex;gap:2rem;list-style:none; }
+.nav-links a { font-size:.78rem;font-weight:500;color:rgba(255,255,255,.6);text-decoration:none;letter-spacing:.03em;transition:color .2s; }
+.nav-links a:hover { color:#fff; }
+
+/* HERO */
+.hero {
+  min-height:52vh;background:var(--navy);
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:1rem 2.5rem 1.5rem;
+  position:relative;overflow:hidden;
+}
+.hero::before {
+  content:'';position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:52px 52px;pointer-events:none;
+}
+.hero-circle {
+  position:absolute;right:-10%;top:-20%;
+  width:70vw;height:70vw;max-width:800px;max-height:800px;
+  background:radial-gradient(circle, rgba(0,168,191,0.15) 0%, transparent 70%);
+  border-radius:50%;pointer-events:none;
+}
+
+/* logo displayed at the right of the hero image */
+.hero-logo-right{
+  position:absolute;
+  right:0px;
+  top:-65px;
+  transform:none;
+  width:380px;
+  height:auto;
+  z-index:8;
+  display:block;
+  pointer-events:none;
+  filter:drop-shadow(0 10px 28px rgba(0,0,0,.18));
+}
+
+@media(max-width:900px){
+  .hero-logo-right{ display:none; }
+}
+.hero-tag {
+  display:inline-flex;align-items:center;gap:.55rem;
+  background:rgba(0,168,191,.12);border:1px solid rgba(0,168,191,.25);
+  color:var(--teal2);padding:.35rem .9rem;border-radius:20px;
+  font-size:.7rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
+  margin-bottom:1rem;width:fit-content;
+  opacity:0;animation:fu .6s .2s forwards;
+}
+.hero-tag::before { content:'';width:5px;height:5px;background:var(--teal2);border-radius:50%; }
+.hero-title {
+  font-family:var(--fd);font-weight:900;
+  font-size:clamp(52px,7vw,100px);
+  line-height:.95;letter-spacing:-.025em;color:#fff;
+  opacity:0;animation:fu .85s .4s forwards;
+  max-width:800px;
+}
+.hero-title .ac { color:var(--teal2); }
+.hero-bottom {
+  display:flex;align-items:center;gap:2.5rem;
+  margin-top:2rem;padding-top:1.5rem;
+  border-top:1px solid rgba(255,255,255,.1);
+  opacity:0;animation:fu .7s .9s forwards;
+  flex-wrap:wrap;
+}
+.hero-stat-n { font-family:var(--fd);font-weight:900;font-size:2rem;color:#fff;line-height:1;letter-spacing:-.02em; }
+.hero-stat-n sup { font-size:1rem;color:var(--teal2); }
+.hero-stat-l { font-size:.68rem;color:rgba(255,255,255,.35);letter-spacing:.07em;margin-top:.2rem; }
+.hero-sep { width:1px;height:36px;background:rgba(255,255,255,.15); }
+
+@keyframes fu { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:none} }
+
+/* BAND */
+.band { background:var(--teal);padding:.8rem 0;overflow:hidden; }
+.band-inner { display:flex;gap:3rem;animation:ticker 22s linear infinite;white-space:nowrap; }
+.b-item { font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(0,55,117,.7);display:flex;align-items:center;gap:.6rem;flex-shrink:0; }
+.b-item::before { content:'◆';font-size:.45rem;opacity:.5; }
+@keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* SECTIONS */
+.s { padding:6rem 2.5rem; }
+.s-white { background:var(--white); }
+.s-ice { background:var(--ice); }
+.s-navy { background:var(--navy); }
+
+.chip { display:inline-flex;align-items:center;gap:.5rem;font-family:var(--fd);font-weight:700;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);margin-bottom:2.5rem; }
+.chip::before { content:'';width:18px;height:2px;background:var(--teal); }
+.chip.light { color:rgba(255,255,255,.5); }
+.chip.light::before { background:var(--teal2); }
+
+h2.H { font-family:var(--fd);font-weight:900;font-size:clamp(34px,4.5vw,64px);line-height:1.02;letter-spacing:-.022em;color:var(--navy); }
+h2.H.wh { color:#fff; }
+h2.H .ac { color:var(--teal); }
+h2.H .wac { color:var(--teal2); }
+
+/* STATS */
+.stat-row { display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:3.5rem; }
+.sb { background:var(--white);padding:2.5rem 2rem;position:relative;overflow:hidden;transition:background .3s; }
+.sb:hover { background:var(--navy); }
+.sb::after { content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--teal));transform:scaleX(0);transform-origin:left;transition:transform .4s; }
+.sb:hover::after { transform:scaleX(1); }
+.sb-n { font-family:var(--fd);font-weight:900;font-size:clamp(38px,4vw,58px);line-height:1;letter-spacing:-.025em;color:var(--blue);transition:color .3s; }
+.sb:hover .sb-n { color:#fff; }
+.sb-l { font-family:var(--fd);font-weight:700;font-size:.75rem;letter-spacing:.07em;text-transform:uppercase;margin-top:.5rem;transition:color .3s; }
+.sb:hover .sb-l { color:rgba(255,255,255,.9); }
+.sb-s { font-size:.75rem;font-weight:300;color:var(--muted);margin-top:.25rem;transition:color .3s; }
+.sb:hover .sb-s { color:rgba(255,255,255,.4); }
+
+/* MISSIONS */
+.missions-grid{
+  display:flex;
+  flex-wrap:wrap;
+  gap:2rem;
+  margin-top:4rem;
+  align-items:flex-start;
+}
+.missions-grid .mc{
+  flex:1 1 320px;
+  min-width:240px;
+  max-width:420px;
+}
+.g2 > .missions-grid {
+  grid-column: 1 / -1;
+}
+.mc{
+  background:var(--white);
+  border: none;
+  border-radius:18px;
+  overflow:hidden;
+  transition:.35s;
+  position:relative;
+}
+.mc:hover{
+  transform:translateY(-6px);
+  box-shadow:0 20px 40px rgba(0,0,0,.08);
+}
+.mc-n{
+  display:none !important;
+}
+.mc img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  border-radius:8px;
+  margin:1rem 0;
+  display:block;
+}
+
+/* ensure image container shows image and provide a neutral placeholder */
+.mc-img{
+  overflow:hidden;
+  border-radius:18px 18px 0 0;
+  background:transparent;
+  display:block;
+}
+.mc-img img{ display:block; visibility:visible; object-position:center center; border-radius:18px 18px 0 0; }
+.mc-content{
+  padding:2rem;
+}
+.mc-icon{
+  width:42px;
+  height:42px;
+  border-radius:10px;
+  background:var(--ice);
+  border:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:1rem;
+}
+.mc-t{
+  font-family:var(--fd);
+  font-weight:700;
+  font-size:1.15rem;
+  color:var(--navy);
+  margin-bottom:.7rem;
+}
+.mc-p{
+  font-size:.9rem;
+  line-height:1.8;
+  color:var(--mid);
+}
+.mc-tag{
+  display:inline-block;
+  margin-top:1.5rem;
+  font-size:.7rem;
+  padding:.35rem .8rem;
+  border-radius:30px;
+  background:rgba(0,168,191,.08);
+  color:var(--teal);
+  border:1px solid rgba(0,168,191,.2);
+}
+
+/* Modal for mission details */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(3,10,22,.6);z-index:9999;align-items:center;justify-content:center;padding:2rem}
+.modal-overlay.show{display:flex}
+.modal{background:#fff;max-width:820px;width:100%;border-radius:12px;overflow:hidden;box-shadow:0 30px 80px rgba(8,20,40,.45);display:flex;flex-direction:column}
+.modal-head{padding:1.25rem 1.5rem;border-bottom:1px solid #f1f4f6;display:flex;align-items:center;justify-content:space-between}
+.modal-title{font-family:var(--fd);font-weight:700;color:var(--navy);font-size:1.1rem}
+.modal-body{display:flex;gap:1.25rem;padding:1.5rem}
+.modal-body img{width:40%;max-width:320px;border-radius:8px;object-fit:cover}
+.modal-body .text{flex:1;font-size:.95rem;line-height:1.6;color:var(--mid)}
+.modal-close{background:transparent;border:none;font-size:1.1rem;cursor:pointer;color:var(--muted)}
+.mc{cursor:pointer}
+
+/* DIRECTEUR */
+.dir-section { background:var(--navy); }
+.dir-inner { max-width:800px;margin:0 auto;text-align:center; }
+.dir-quote { font-family:var(--fd);font-weight:300;font-size:clamp(18px,2.5vw,28px);line-height:1.6;color:rgba(255,255,255,.85);margin-bottom:2.5rem;font-style:italic; }
+.dir-quote strong { color:#fff;font-weight:700; }
+.dir-sep { width:60px;height:2px;background:var(--teal);margin:0 auto 2rem; }
+.dir-sig { font-family:var(--fd);font-weight:700;font-size:.95rem;color:#fff; }
+.dir-role { font-size:.78rem;color:rgba(255,255,255,.4);margin-top:.3rem;letter-spacing:.06em; }
+
+/* CONTACT */
+.contact-grid { display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start; }
+.c-info-item { display:flex;align-items:flex-start;gap:1rem;margin-bottom:2rem; }
+.c-icon { width:40px;height:40px;border-radius:8px;background:var(--ice);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;flex-shrink:0; }
+.c-label { font-family:var(--fd);font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:.3rem; }
+.c-val { font-size:.9rem;color:var(--navy);font-weight:500; }
+
+.form-group { margin-bottom:1.5rem; }
+.form-label { font-size:.78rem;font-weight:500;color:var(--navy);letter-spacing:.04em;margin-bottom:.5rem;display:block; }
+.form-input, .form-textarea {
+  width:100%;padding:.85rem 1rem;
+  border:1.5px solid var(--line);border-radius:8px;
+  font-family:var(--fb);font-size:.9rem;color:var(--ink);
+  background:var(--white);transition:border-color .25s;outline:none;
+}
+.form-input:focus, .form-textarea:focus { border-color:var(--teal); }
+.form-textarea { height:140px;resize:none; }
+.form-btn {
+  width:100%;padding:1rem;border-radius:8px;
+  background:var(--navy);color:#fff;border:none;cursor:pointer;
+  font-family:var(--fd);font-weight:700;font-size:.9rem;letter-spacing:.06em;
+  transition:background .25s;
+}
+.form-btn:hover { background:var(--blue); }
+
+/* FOOTER */
+footer { background:var(--white);padding:3rem 2.5rem; }
+.ft-top { display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:4rem;padding-bottom:2.5rem;border-bottom:1px solid var(--line); }
+.ft-brand-n { font-family:var(--fd);font-weight:900;font-size:1.1rem;color:var(--navy);margin-bottom:.5rem; }
+.ft-brand-n span { color:var(--teal2); }
+.ft-brand-p { font-size:.78rem;font-weight:300;color:var(--mid);line-height:1.8; }
+.ft-col-h { font-family:var(--fd);font-weight:700;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--navy);margin-bottom:1rem; }
+.ft-col-l { list-style:none; }
+.ft-col-l li { font-size:.8rem;font-weight:300;color:var(--mid);line-height:2.1; }
+.ft-col-l a { color:var(--navy);text-decoration:none;transition:color .2s; }
+.ft-col-l a:hover { color:var(--teal2); }
+.ft-bot { display:flex;justify-content:space-between;align-items:center;padding-top:1.8rem; }
+.ft-copy { font-size:.7rem;color:var(--mid);letter-spacing:.04em; }
+
+/* REVEAL */
+.rv { opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease; }
+.rv.in { opacity:1;transform:none; }
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+/* G2 */
+.g2 { display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start; }
+
+.body-p { font-size:.88rem;font-weight:300;line-height:1.95;color:var(--mid); }
+.body-p+.body-p { margin-top:1.1rem; }
+
+@media(max-width:900px){
+  nav { padding:.9rem 1.5rem; }
+  .nav-links { display:none; }
+  .s { padding:4rem 1.5rem; }
+  .hero { padding:7rem 1.5rem 3rem; }
+  .stat-row { grid-template-columns:1fr 1fr; }
+  .missions-grid { grid-template-columns:1fr; }
+  .g2,.contact-grid { grid-template-columns:1fr;gap:2.5rem; }
+  .ft-top { grid-template-columns:1fr; }
+}
+
+/* ============ TEMPS FORTS — FRISE CHRONOLOGIQUE ============ */
+.tf-intro { max-width:1100px; }
+.tf-wrap { position:relative; margin-top:4.5rem; }
+.tf-axis { position:absolute; left:50%; top:0; bottom:0; width:2px; background:var(--line); transform:translateX(-50%); border-radius:2px; }
+.tf-axis-fill { position:absolute; left:0; top:0; width:100%; background:linear-gradient(180deg,var(--teal),var(--blue)); height:0; border-radius:2px; }
+.tf-cap { position:relative; z-index:3; width:fit-content; margin:0 auto 2.5rem; font-family:var(--fd); font-weight:900; font-size:1.1rem; letter-spacing:.14em; color:#fff; background:var(--navy); padding:.5rem 1.4rem; border-radius:30px; }
+.tf-cap.end { margin:2.5rem auto 0; background:var(--teal); }
+
+.tf-item { position:relative; display:grid; grid-template-columns:1fr 70px 1fr; align-items:center; margin-bottom:2.6rem; }
+.tf-item:last-of-type { margin-bottom:0; }
+.tf-card { background:var(--white); border:1px solid var(--line); border-radius:16px; padding:1.7rem 1.9rem; box-shadow:0 16px 38px rgba(0,55,117,.06); position:relative; transition:transform .35s ease, box-shadow .35s ease; }
+.tf-card:hover { transform:translateY(-3px); box-shadow:0 26px 52px rgba(0,55,117,.13); }
+.tf-item.left  .tf-card { grid-column:1; text-align:right; }
+.tf-item.right .tf-card { grid-column:3; text-align:left; }
+/* connector arrow */
+.tf-card::after { content:''; position:absolute; top:50%; width:14px; height:14px; background:var(--white); transform:translateY(-50%) rotate(45deg); }
+.tf-item.left  .tf-card::after { right:-8px; border-right:1px solid var(--line); border-top:1px solid var(--line); }
+.tf-item.right .tf-card::after { left:-8px; border-left:1px solid var(--line); border-bottom:1px solid var(--line); }
+
+.tf-node { grid-column:2; justify-self:center; width:18px; height:18px; border-radius:50%; background:var(--white); border:3px solid var(--muted); z-index:2; transition:border-color .4s, background .4s, box-shadow .4s; }
+.tf-item.on .tf-node { border-color:var(--teal); background:var(--teal); box-shadow:0 0 0 6px rgba(0,168,191,.16); }
+
+.tf-date { font-family:var(--fd); font-weight:900; font-size:.74rem; letter-spacing:.12em; text-transform:uppercase; color:var(--teal); margin-bottom:.55rem; }
+.tf-title { font-family:var(--fd); font-weight:700; font-size:1.12rem; line-height:1.28; color:var(--navy); margin-bottom:.55rem; letter-spacing:-.01em; }
+.tf-text { font-size:.84rem; font-weight:300; line-height:1.75; color:var(--mid); }
+.tf-text strong { color:var(--navy); font-weight:600; }
+
+/* barre de filtres par mois */
+.tf-filter { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:2.4rem; }
+.tf-fbtn { font-family:var(--fd); font-weight:700; font-size:.74rem; letter-spacing:.04em; padding:.5rem 1rem; border-radius:30px; border:1px solid var(--line); background:var(--white); color:var(--mid); cursor:pointer; transition:.25s; }
+.tf-fbtn:hover { border-color:var(--teal); color:var(--navy); }
+.tf-fbtn.on { background:var(--navy); border-color:var(--navy); color:#fff; }
+.tf-fbtn .tf-fcount { opacity:.55; margin-left:.35rem; font-weight:400; }
+.tf-empty { display:none; text-align:center; padding:3rem 0; color:var(--muted); font-size:.9rem; }
+/* mode filtré : items masqués, pas d'alternance forcée */
+.tf-item.hide { display:none; }
+
+@media(max-width:900px){
+  .tf-wrap { margin-top:3rem; }
+  .tf-axis { left:9px; transform:none; }
+  .tf-cap { margin-left:0; }
+  .tf-item { grid-template-columns:30px 1fr; gap:.5rem; }
+  .tf-item.left .tf-card, .tf-item.right .tf-card { grid-column:2; text-align:left; }
+  .tf-node { grid-column:1; justify-self:start; margin-left:1px; }
+  .tf-card::after { display:none; }
+}
+
+/* ============ MISSIONS — SCROLL DÉROULANT ============ */
+.missions-scroll { padding-top:6rem; padding-bottom:0; }
+.missions-intro { max-width:1100px; }
+.missions-intro .g2 { margin-bottom:0; }
+
+/* tall scroll track that pins the sticky stage */
+.m-stage { position:relative;height:540vh; }
+.m-sticky {
+  position:sticky; top:0;
+  height:100vh;
+  display:grid;
+  grid-template-columns:88px 1fr 1fr;
+  align-items:center;
+  gap:0;
+  overflow:hidden;
+}
+
+/* progress rail */
+.m-rail { display:flex;flex-direction:column;justify-content:space-between;gap:0;height:72%;position:relative; }
+.m-rail::before { content:'';position:absolute;left:9px;top:9px;bottom:9px;width:1px;background:var(--line); }
+.m-rail-fill { position:absolute;left:9px;top:9px;width:1px;background:var(--teal);height:0; }
+.m-dot { position:relative;display:flex;align-items:center;gap:1rem;flex:0 0 auto;cursor:pointer; }
+.m-dot-mark { width:19px;height:19px;border-radius:50%;border:1px solid var(--line);background:var(--white);flex-shrink:0;z-index:2;transition:.4s;display:flex;align-items:center;justify-content:center; }
+.m-dot-mark::after { content:'';width:6px;height:6px;border-radius:50%;background:var(--muted);transition:.4s; }
+.m-dot-num { font-family:var(--fd);font-weight:700;font-size:.7rem;letter-spacing:.1em;color:var(--muted);transition:.4s;opacity:.6; }
+.m-dot.on .m-dot-mark { border-color:var(--teal);transform:scale(1.05); }
+.m-dot.on .m-dot-mark::after { background:var(--teal);transform:scale(1.5); }
+.m-dot.on .m-dot-num { color:var(--navy);opacity:1; }
+.m-dot.done .m-dot-mark::after { background:var(--teal); }
+
+/* text column */
+.m-text-col { position:relative;padding:0 3.5rem 0 2.5rem; }
+.m-watermark { position:absolute;top:-3.2rem;left:1.8rem;font-family:var(--fd);font-weight:900;font-size:12rem;line-height:1;color:var(--ice);z-index:0;pointer-events:none;letter-spacing:-.04em; }
+.m-panels { position:relative;z-index:1; }
+.m-panel { position:absolute;top:0;left:0;width:100%;opacity:0;transform:translateY(26px);pointer-events:none;transition:opacity .6s ease,transform .6s ease;visibility:hidden; }
+.m-panel.active { opacity:1;transform:none;position:relative;pointer-events:auto;visibility:visible; }
+.m-panel .m-eyebrow { display:inline-flex;align-items:center;gap:.6rem;font-family:var(--fd);font-weight:700;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);margin-bottom:1.2rem; }
+.m-panel .m-eyebrow::before { content:'';width:18px;height:2px;background:var(--teal); }
+.m-panel .m-icon { width:48px;height:48px;border-radius:12px;background:var(--ice);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem; }
+.m-panel .m-title { font-family:var(--fd);font-weight:900;font-size:clamp(30px,3.4vw,48px);line-height:1.04;letter-spacing:-.022em;color:var(--navy);margin-bottom:1.4rem; }
+.m-panel .m-desc { font-size:1rem;font-weight:300;line-height:1.9;color:var(--mid);max-width:38ch; }
+.m-panel .m-stat { display:flex;gap:2.5rem;margin-top:2.2rem;padding-top:1.6rem;border-top:1px solid var(--line); }
+.m-stat-n { font-family:var(--fd);font-weight:900;font-size:1.8rem;color:var(--blue);line-height:1;letter-spacing:-.02em; }
+.m-stat-l { font-size:.72rem;color:var(--muted);letter-spacing:.05em;margin-top:.4rem;text-transform:uppercase; }
+
+/* sub-stagger: explanation appears slightly after the title */
+.m-panel .m-icon,.m-panel .m-title { transition:opacity .55s ease .05s,transform .55s ease .05s; }
+.m-panel .m-desc,.m-panel .m-stat { opacity:0;transform:translateY(16px);transition:opacity .6s ease .28s,transform .6s ease .28s; }
+.m-panel.active .m-desc,.m-panel.active .m-stat { opacity:1;transform:none; }
+
+/* image column */
+.m-img-col { position:relative;height:74vh;border-radius:20px;overflow:hidden;background:var(--ice);box-shadow:0 30px 60px rgba(0,55,117,.12); }
+.m-shot { position:absolute;inset:0;opacity:0;transform:scale(1.06);transition:opacity .7s ease,transform 1.1s ease;visibility:hidden; }
+.m-shot img { width:100%;height:100%;object-fit:cover;display:block; }
+.m-shot.active { opacity:1;transform:none;visibility:visible; }
+.m-img-col::after { content:'';position:absolute;inset:0;background:linear-gradient(160deg,transparent 55%,rgba(0,55,117,.28));pointer-events:none;z-index:2; }
+.m-img-badge { position:absolute;left:1.4rem;bottom:1.4rem;z-index:3;display:flex;align-items:center;gap:.6rem;background:rgba(0,55,117,.78);backdrop-filter:blur(8px);color:#fff;padding:.5rem .95rem;border-radius:30px;font-size:.7rem;font-weight:500;letter-spacing:.05em; }
+.m-img-badge::before { content:'';width:5px;height:5px;border-radius:50%;background:var(--teal2); }
+
+/* scroll hint */
+.m-hint { position:absolute;right:1.8rem;top:1.6rem;z-index:5;display:flex;align-items:center;gap:.5rem;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);transition:opacity .4s; }
+.m-hint span { width:22px;height:34px;border:1.5px solid var(--line);border-radius:12px;position:relative; }
+.m-hint span::after { content:'';position:absolute;left:50%;top:6px;width:3px;height:6px;border-radius:3px;background:var(--teal);transform:translateX(-50%);animation:mwheel 1.6s ease-in-out infinite; }
+@keyframes mwheel { 0%{opacity:0;transform:translate(-50%,0)} 30%{opacity:1} 70%{opacity:1} 100%{opacity:0;transform:translate(-50%,10px)} }
+
+@media(max-width:900px){
+  /* on disable le pin : tout s'empile et reste visible */
+  .m-stage { height:auto !important; }
+  .m-sticky { position:static;height:auto;display:block;overflow:visible; }
+  .m-rail,.m-watermark,.m-hint { display:none; }
+  .m-text-col { padding:0; }
+  .m-panels { display:flex;flex-direction:column;gap:3.5rem; }
+  .m-panel { position:relative !important;opacity:1 !important;transform:none !important;visibility:visible !important;pointer-events:auto; }
+  .m-panel .m-desc,.m-panel .m-stat { opacity:1 !important;transform:none !important; }
+  .m-panel .m-shot-mob { display:block;height:38vh;border-radius:16px;overflow:hidden;margin-bottom:1.6rem;box-shadow:0 18px 40px rgba(0,55,117,.12); }
+  .m-panel .m-shot-mob img { width:100%;height:100%;object-fit:cover;display:block; }
+  .m-img-col { display:none; }
+}
+.m-shot-mob { display:none; }
+</style>
+</head>
+<body>
+
+<div id="cur"></div>
+<div id="cur2"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-brand" href="#">
+    <span class="nav-badge">CTI</span>
+    <span class="nav-name">XXXXX <span>/ Assurance Maladie</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#chiffres">Chiffres Clés</a></li>
+    <li><a href="#missions">Nos Missions</a></li>
+    <li><a href="#tempsforts">Temps Forts</a></li>
+    <li><a href="#directeur">Mot du Directeur</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-circle"></div>
+  <img src="ASM_logo_white.png" alt="Assurance Maladie" class="hero-logo-right">
+  <span class="hero-tag">Rapport d'activité — 2016</span>
+  <h1 class="hero-title">Agir ensemble,<br><span class="ac">protéger chacun.</span></h1>
+</section>
+
+<!-- BAND -->
+<div class="band">
+  <div class="band-inner">
+    <span class="b-item">Centre de Traitement Informatique</span>
+    <span class="b-item">Branche Maladie</span>
+    <span class="b-item">24h/24 — 7j/7</span>
+    <span class="b-item">XXXXX</span>
+    <span class="b-item">Rapport 2016</span>
+    <span class="b-item">SESAM-Vitale</span>
+    <span class="b-item">Production informatique</span>
+    <span class="b-item">Centre de Traitement Informatique</span>
+    <span class="b-item">Branche Maladie</span>
+    <span class="b-item">24h/24 — 7j/7</span>
+    <span class="b-item">XXXXXX</span>
+    <span class="b-item">Rapport 2016</span>
+    <span class="b-item">SESAM-Vitale</span>
+    <span class="b-item">Production informatique</span>
+  </div>
+</div>
+
+<!-- CHIFFRES CLÉS -->
+<section class="s s-ice" id="chiffres">
+  <div class="chip rv">01 — Chiffres clés</div>
+  <h2 class="H rv">2016 en <span class="ac">chiffres</span></h2>
+  <div class="stat-row rv">
+    <div class="sb">
+      <div class="sb-n">XXX</div>
+      <div class="sb-l">Décomptes traités</div>
+      <div class="sb-s">Sur l'ensemble du périmètre</div>
+    </div>
+    <div class="sb">
+      <div class="sb-n">XXX</div>
+      <div class="sb-l">CPAM gérées</div>
+      <div class="sb-s">Domaine Prestations</div>
+    </div>
+    <div class="sb">
+      <div class="sb-n">XXX</div>
+      <div class="sb-l">Taux de réussite CPG</div>
+      <div class="sb-s">Parmi les meilleurs résultats</div>
+    </div>
+    <div class="sb">
+      <div class="sb-n">XXX</div>
+      <div class="sb-l">Agents</div>
+      <div class="sb-s">Effectif budgétaire 2016</div>
+    </div>
+  </div>
+</section>
+
+<!-- NOS MISSIONS — SCROLL DÉROULANT -->
+<section class="s s-white missions-scroll" id="missions" data-screen-label="Missions">
+  <div class="missions-intro">
+    <div class="chip rv">02 — Nos missions</div>
+    <div class="g2 rv" style="align-items:end;">
+      <h2 class="H">Ce que nous<br><span class="ac">faisons</span></h2>
+      <p class="body-p" style="padding-bottom:.4rem;">Le CTI XXX assure la production informatique, la recette fonctionnelle et la sécurité des systèmes pour l'ensemble des organismes du réseau de l'Assurance Maladie. <strong style="color:var(--navy);font-weight:500;">Faites défiler</strong> pour parcourir nos cinq missions.</p>
+    </div>
+  </div>
+
+  <div class="m-stage" id="m-stage">
+    <div class="m-sticky">
+
+      <!-- rail -->
+      <div class="m-rail" id="m-rail">
+        <div class="m-rail-fill" id="m-rail-fill"></div>
+        <div class="m-dot" data-go="0"><div class="m-dot-mark"></div><div class="m-dot-num">01</div></div>
+        <div class="m-dot" data-go="1"><div class="m-dot-mark"></div><div class="m-dot-num">02</div></div>
+        <div class="m-dot" data-go="2"><div class="m-dot-mark"></div><div class="m-dot-num">03</div></div>
+        <div class="m-dot" data-go="3"><div class="m-dot-mark"></div><div class="m-dot-num">04</div></div>
+        <div class="m-dot" data-go="4"><div class="m-dot-mark"></div><div class="m-dot-num">05</div></div>
+      </div>
+
+      <!-- text column -->
+      <div class="m-text-col">
+        <div class="m-watermark" id="m-watermark">01</div>
+        <div class="m-panels">
+
+          <div class="m-panel" data-i="0">
+            <div class="m-shot-mob"><img src="datasevrer.jpg" alt="Salle serveurs"></div>
+            <div class="m-eyebrow">Mission 01</div>
+            <div class="m-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </div>
+            <div class="m-title">La Production</div>
+            <div class="m-desc">Nous assurons l'exploitation des systèmes critiques : surveillance permanente, pilotage des opérations, gestion des incidents et maintien de la disponibilité pour l'ensemble des CPAM.</div>
+            <div class="m-stat">
+              <div><div class="m-stat-n">XXX</div><div class="m-stat-l">CPAM desservies</div></div>
+              <div><div class="m-stat-n">24/7</div><div class="m-stat-l">Supervision</div></div>
+            </div>
+          </div>
+
+          <div class="m-panel" data-i="1">
+            <div class="m-shot-mob"><img src="reunion cti.jpg" alt="Réunion CTI"></div>
+            <div class="m-eyebrow">Mission 02</div>
+            <div class="m-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div class="m-title">La Relation Clients</div>
+            <div class="m-desc">Assistance et support aux utilisateurs : réception et traitement des demandes via SCCD, suivi des incidents et coordination avec les équipes locales pour rétablir le service rapidement.</div>
+            <div class="m-stat">
+              <div><div class="m-stat-n">XXX</div><div class="m-stat-l">Incidents résolus</div></div>
+              <div><div class="m-stat-n">SCCD</div><div class="m-stat-l">Outil de suivi</div></div>
+            </div>
+          </div>
+
+          <div class="m-panel" data-i="2">
+            <div class="m-shot-mob"><img src="tealmwork.jpg" alt="Travail d'équipe"></div>
+            <div class="m-eyebrow">Mission 03</div>
+            <div class="m-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            </div>
+            <div class="m-title">La Recette Fonctionnelle</div>
+            <div class="m-desc">Validation des fonctionnalités applicatives avant déploiement national : conception et exécution de scénarios de test, suivi des anomalies et coordination avec les équipes de développement.</div>
+            <div class="m-stat">
+              <div><div class="m-stat-n">XXX</div><div class="m-stat-l">Recettes initiées</div></div>
+              <div><div class="m-stat-n">XXX</div><div class="m-stat-l">Environnements</div></div>
+            </div>
+          </div>
+
+          <div class="m-panel" data-i="3">
+            <div class="m-shot-mob"><img src="rack.jpg" alt="Baie informatique"></div>
+            <div class="m-eyebrow">Mission 04</div>
+            <div class="m-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+            </div>
+            <div class="m-title">La Recette de Préproduction</div>
+            <div class="m-desc">Tests finaux dans un environnement proche de la production : tests de bout en bout, vérification des configurations, contrôle des performances et validation des procédures de déploiement pour limiter les risques.</div>
+            <div class="m-stat">
+              <div><div class="m-stat-n">XXX</div><div class="m-stat-l">CPAM contributrices</div></div>
+              <div><div class="m-stat-n">XXX</div><div class="m-stat-l">Constats validés</div></div>
+            </div>
+          </div>
+
+          <div class="m-panel" data-i="4">
+            <div class="m-shot-mob"><img src="aa.png" alt="Sécurité"></div>
+            <div class="m-eyebrow">Mission 05</div>
+            <div class="m-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            </div>
+            <div class="m-title">La PSSI</div>
+            <div class="m-desc">Sécurité du système d'information : audits internes, gestion des accès, protection des données et plan de continuité d'activité pour assurer la résilience des services.</div>
+            <div class="m-stat">
+              <div><div class="m-stat-n">XXX</div><div class="m-stat-l">Items PSSI 2016</div></div>
+              <div><div class="m-stat-n">PCA</div><div class="m-stat-l">Continuité d'activité</div></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- image column -->
+      <div class="m-img-col">
+        <div class="m-hint" id="m-hint"><span></span>Défiler</div>
+        <div class="m-shot" data-i="0"><img src="datasevrer.jpg" alt="Salle serveurs"></div>
+        <div class="m-shot" data-i="1"><img src="reunion cti.jpg" alt="Réunion CTI"></div>
+        <div class="m-shot" data-i="2"><img src="tealmwork.jpg" alt="Travail d'équipe"></div>
+        <div class="m-shot" data-i="3"><img src="rack.jpg" alt="Baie informatique"></div>
+        <div class="m-shot" data-i="4"><img src="aa.png" alt="Sécurité"></div>
+        <div class="m-img-badge" id="m-img-badge">24h/24 — 7j/7</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TEMPS FORTS — FRISE CHRONOLOGIQUE -->
+<section class="s s-ice" id="tempsforts" data-screen-label="Temps forts">
+  <div class="tf-intro">
+    <div class="chip rv">03 — Temps forts</div>
+    <div class="g2 rv" style="align-items:end;">
+      <h2 class="H">Les temps forts<br><span class="ac">de 2016</span></h2>
+      <p class="body-p" style="padding-bottom:.4rem;">Retour, mois par mois, sur les événements qui ont marqué l'année du CTI XXX&nbsp;: montées en charge, audits, déploiements et résultats. <strong style="color:var(--navy);font-weight:500;">Faites défiler</strong> pour parcourir la chronologie, ou choisissez un mois ci-dessous.</p>
+    </div>
+    <div class="tf-filter rv" id="tf-filter">
+      <button class="tf-fbtn on" data-m="all">Toute l'année</button>
+      <button class="tf-fbtn" data-m="01">Janvier</button>
+      <button class="tf-fbtn" data-m="02">Février</button>
+      <button class="tf-fbtn" data-m="03">Mars</button>
+      <button class="tf-fbtn" data-m="04">Avril</button>
+      <button class="tf-fbtn" data-m="05">Mai</button>
+      <button class="tf-fbtn" data-m="06">Juin</button>
+      <button class="tf-fbtn" data-m="07">Juillet</button>
+      <button class="tf-fbtn" data-m="09">Septembre</button>
+      <button class="tf-fbtn" data-m="10">Octobre</button>
+      <button class="tf-fbtn" data-m="11">Novembre</button>
+      <button class="tf-fbtn" data-m="12">Décembre</button>
+    </div>
+  </div>
+
+  <div class="tf-wrap" id="tf-wrap">
+    <div class="tf-axis"><div class="tf-axis-fill" id="tf-axis-fill"></div></div>
+
+    <div class="tf-cap rv">JANVIER</div>
+
+    <div class="tf-item left rv" data-month="01">
+      <div class="tf-card">
+        <div class="tf-date">11 janvier 2016</div>
+        <div class="tf-title">Intégration de nouvelles CPAM partenaires</div>
+        <div class="tf-text">Le périmètre de <strong>Recette Fonctionnelle</strong> s'élargit avec l'arrivée de nouvelles caisses primaires, renforçant le rôle du CTI au sein du réseau.</div>
+      </div>
+      <div class="tf-node"></div>
+    </div>
+
+    <div class="tf-item right rv" data-month="01">
+      <div class="tf-node"></div>
+      <div class="tf-card">
+        <div class="tf-date">25 janvier 2016</div>
+        <div class="tf-title">Lancement du plan de charge annuel</div>
+        <div class="tf-text">Cadrage des <strong>objectifs de production et de recette</strong> pour l'exercice, en lien avec la Caisse Nationale et les organismes du réseau.</div>
+      </div>
+    </div>
+
+    <div class="tf-item left rv" data-month="02">
+      <div class="tf-card">
+        <div class="tf-date">15 février 2016</div>
+        <div class="tf-title">Renouvellement du parc serveurs</div>
+        <div class="tf-text">Modernisation d'une partie de l'infrastructure&nbsp;: <strong>nouvelles baies et virtualisation</strong> pour gagner en capacité et en résilience.</div>
+      </div>
+      <div class="tf-node"></div>
+    </div>
+
+    <div class="tf-item right rv" data-month="03">
+      <div class="tf-node"></div>
+      <div class="tf-card">
+        <div class="tf-date">7 mars 2016</div>
+        <div class="tf-title">Montée de version de l'infrastructure</div>
+        <div class="tf-text">Opération de <strong>mise à niveau des environnements de production</strong> menée sans interruption de service, en coordination avec les équipes d'exploitation.</div>
+      </div>
+    </div>
+
+    <div class="tf-item left rv" data-month="03">
+      <div class="tf-card">
+        <div class="tf-date">21 mars 2016</div>
+        <div class="tf-title">Campagne de tests de charge</div>
+        <div class="tf-text">Vérification du comportement des applications sous forte sollicitation pour <strong>anticiper les pics d'activité</strong> du réseau.</div>
+      </div>
+      <div class="tf-node"></div>
+    </div>
+
+    <div class="tf-item right rv" data-month="04">
+      <div class="tf-node"></div>
+      <div class="tf-card">
+        <div class="tf-date">12 avril 2016</div>
+        <div class="tf-title">Audit PSSI annuel</div>
+        <div class="tf-text">Le contrôle annuel de sécurité confirme <strong>XXX&nbsp;% des items conformes</strong>, validant la robustesse des dispositifs de protection du système d'information.</div>
+      </div>
+    </div>
+
+    <div class="tf-item left rv" data-month="05">
+      <div class="tf-card">
+        <div class="tf-date">9 mai 2016</div>
+        <div class="tf-title">Optimisation du support utilisateurs</div>
+        <div class="tf-text">Amélioration des processus de traitement via <strong>SCCD</strong>&nbsp;: réduction des délais de prise en charge et meilleur suivi des incidents.</div>
+      </div>
+      <div class="tf-node"></div>
+    </div>
+
+    <div class="tf-item right rv" data-month="06">
+      <div class="tf-node"></div>
+      <div class="tf-card">
+        <div class="tf-date">6 juin 2016</div>
+        <div class="tf-title">Extension de l'offre de Préproduction</div>
+        <div class="tf-text">Le CTI poursuit la <strong>montée en charge des activités de préproduction</strong> par l'ajout de nouveaux environnements et l'élargissement de son catalogue de services.</div>
+      </div>
+    </div>
+
+    <div class="tf-item left rv" data-month="06">
+      <div class="tf-card">
+        <div class="tf-date">27 juin 2016</div>
+        <div class="tf-title">Bilan semestriel</div>
+        <div class="tf-text">Revue de mi-année des indicateurs&nbsp;: <strong>disponibilité, qualité de service et avancement des projets</strong> conformes aux engagements.</div>
+      </div>
+      <div class="tf-node"></div>
+    </div>
+
+    <div class="tf-item right rv" data-month="07">
+      <div class="tf-node"></div>
+      <div class="tf-card">
+        <div class="tf-date">18 juillet 2016</div>
+        <div class="tf-title">Préparation des opérations estivales</div>
+        <div class="tf-text">Mise en place d'une <strong>organisation renforcée</strong> pour assurer la continuité du service durant la période de congés.</div>
+      </div>
+    </div>
+
+    <div class="tf-item left rv" data-month="09">
+      <div class="tf-card">
+        <div class="tf-date">12 septembre 2016</div>
+        <div class="tf-title">Plan de Continuité d'Activité</div>
+        <div class="tf-text">Mise en œuvre et test du <strong>PCA</strong> pour garantir la résilience des services critiques en cas d'incident majeur.</div>
+      </div>
+      <div class="tf-node"></div>
+    </div>
+
+    <div class="tf-item right rv" data-month="09">
+      <div class="tf-node"></div>
+      <div class="tf-card">
+        <div class="tf-date">26 septembre 2016</div>
+        <div class="tf-title">Séminaire des équipes</div>
+        <div class="tf-text">Journée de cohésion et de partage autour des <strong>bonnes pratiques et des projets à venir</strong>, réunissant l'ensemble des collaborateurs.</div>
+      </div>
+    </div>
+
+    <div class="tf-item left rv" data-month="10">
+      <div class="tf-card">
+        <div class="tf-date">10 octobre 2016</div>
+        <div class="tf-title">Déploiement national d'une application majeure</div>
+        <div class="tf-text">Qualification puis mise en production d'une application déployée à l'échelle nationale, après une <strong>campagne de recette de bout en bout</strong>.</div>
+      </div>
+      <div class="tf-node"></div>
+    </div>
+
+    <div class="tf-item right rv" data-month="11">
+      <div class="tf-node"></div>
+      <div class="tf-card">
+        <div class="tf-date">14 novembre 2016</div>
+        <div class="tf-title">Certification des procédures qualité</div>
+        <div class="tf-text">Consolidation du <strong>référentiel qualité</strong> et formalisation des procédures pour fiabiliser les opérations de production et de recette.</div>
+      </div>
+    </div>
+
+    <div class="tf-item left rv" data-month="12">
+      <div class="tf-card">
+        <div class="tf-date">5 décembre 2016</div>
+        <div class="tf-title">Tête de classement CPG</div>
+        <div class="tf-text">Le CTI clôt l'année en tête de classement avec des <strong>taux de réussite supérieurs à XXX&nbsp;%</strong> sur ses objectifs CPG et l'intéressement.</div>
+      </div>
+      <div class="tf-node"></div>
+    </div>
+
+    <div class="tf-item right rv" data-month="12">
+      <div class="tf-node"></div>
+      <div class="tf-card">
+        <div class="tf-date">19 décembre 2016</div>
+        <div class="tf-title">Bilan annuel et perspectives 2017</div>
+        <div class="tf-text">Présentation des <strong>résultats de l'exercice</strong> et cadrage des grandes orientations pour l'année suivante.</div>
+      </div>
+    </div>
+
+    <div class="tf-cap end rv">DÉCEMBRE</div>
+    <div class="tf-empty" id="tf-empty">Aucun temps fort pour ce mois.</div>
+  </div>
+</section>
+
+<!-- MOT DU DIRECTEUR -->
+<section class="s dir-section" id="directeur">
+  <div class="chip light rv">04 — Éditorial</div>
+  <div class="dir-inner">
+    <p class="dir-quote rv">
+      «&nbsp;En 2016 encore, le CTI XXXX se hisse en tête de classement concernant ses résultats CPG et l'intéressement, avec des <strong>taux de réussite de plus de XXX%</strong>. Ces résultats démontrent l'implication des équipes sur la qualité de service apportée et les efforts d'amélioration permanents entrepris.&nbsp;»
+    </p>
+    <p class="dir-quote rv d1" style="font-size:clamp(15px,1.8vw,20px);">
+      «&nbsp;Le CTI poursuit sa montée en charge des activités de Recette Fonctionnelle et de Préproduction par l'intégration de nouvelles CPAM partenaires et par l'extension de son offre de service.&nbsp;»
+    </p>
+    <div class="dir-sep rv d2"></div>
+    <div class="rv d3">
+      <div class="dir-sig">XXX</div>
+      <div class="dir-role">Directeur — CTI XXX</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-top">
+    <div>
+      <div class="ft-brand-n">CTI <span>XXX</span></div>
+      <p class="ft-brand-p">Centre de Traitement Informatique<br>Branche Maladie — Assurance Maladie</p>
+    </div>
+    <div>
+      <div class="ft-col-h">Navigation</div>
+      <ul class="ft-col-l">
+        <li><a href="#chiffres">Chiffres Clés</a></li>
+        <li><a href="#missions">Nos Missions</a></li>
+        <li><a href="#tempsforts">Temps Forts</a></li>
+        <li><a href="#directeur">Mot du Directeur</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="ft-col-h">Informations</div>
+      <ul class="ft-col-l">
+        <li>Tél : XXXXX</li>
+        <li>Fax : XXXXX</li>
+        <li>XXXXXXX</li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bot">
+    <div class="ft-copy">© 2016 CTI XXX — Rapport d'activité 2016</div>
+  </div>
+</footer>
+
+<script>
+const cur=document.getElementById('cur'),cur2=document.getElementById('cur2');
+let mx=0,my=0,ox=0,oy=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+(function loop(){ox+=(mx-ox)*.13;oy+=(my-oy)*.13;cur2.style.left=ox+'px';cur2.style.top=oy+'px';requestAnimationFrame(loop);})();
+
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('raised',scrollY>40));
+
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});},{threshold:.1});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+
+// Missions — moteur de scroll déroulant
+(() => {
+  const stage = document.getElementById('m-stage');
+  if(!stage) return;
+  const panels = [...document.querySelectorAll('.m-panel')];
+  const shots  = [...document.querySelectorAll('.m-shot')];
+  const dots   = [...document.querySelectorAll('.m-dot')];
+  const fill   = document.getElementById('m-rail-fill');
+  const wm     = document.getElementById('m-watermark');
+  const badge  = document.getElementById('m-img-badge');
+  const hint   = document.getElementById('m-hint');
+  const N = panels.length;
+  const badges = ['24h/24 — 7j/7','Support réseau','Qualification','Préproduction','Sécurité'];
+  let cur = -1, ticking = false;
+
+  function setActive(i){
+    if(i === cur) return;
+    cur = i;
+    panels.forEach((p,k)=>p.classList.toggle('active',k===i));
+    shots.forEach((p,k)=>p.classList.toggle('active',k===i));
+    dots.forEach((d,k)=>{ d.classList.toggle('on',k===i); d.classList.toggle('done',k<i); });
+    if(wm) wm.textContent = String(i+1).padStart(2,'0');
+    if(badge) badge.textContent = badges[i] || '';
+  }
+
+  function update(){
+    ticking = false;
+    const r = stage.getBoundingClientRect();
+    const total = stage.offsetHeight - window.innerHeight;
+    if(total <= 0){ setActive(0); return; }
+    const scrolled = Math.min(Math.max(-r.top,0), total);
+    const p = scrolled / total;
+    // trait continu, borné aux extrémités du rail (9px de marge haut/bas)
+    if(fill) fill.style.height = 'calc((100% - 18px) * ' + p + ')';
+    // mission active = pastille la plus proche du trait
+    let idx = Math.round(p * (N - 1));
+    if(idx >= N) idx = N-1;
+    if(idx < 0) idx = 0;
+    setActive(idx);
+    if(hint) hint.style.opacity = (p > 0.03 ? '0' : '');
+  }
+
+  function onScroll(){ if(!ticking){ ticking = true; requestAnimationFrame(update); } }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', update);
+
+  // clic sur le rail = aller à la mission
+  dots.forEach(d => d.addEventListener('click', () => {
+    const i = +d.dataset.go;
+    const total = stage.offsetHeight - window.innerHeight;
+    const stageTop = stage.getBoundingClientRect().top + window.scrollY;
+    const p = (i) / (N - 1);
+    window.scrollTo({ top: stageTop + p * total, behavior: 'smooth' });
+  }));
+
+  setActive(0);
+  update();
+})();
+
+// Temps forts — remplissage de l'axe au scroll
+(() => {
+  const wrap = document.getElementById('tf-wrap');
+  const fill = document.getElementById('tf-axis-fill');
+  if(!wrap || !fill) return;
+  const items = [...wrap.querySelectorAll('.tf-item')];
+  let ticking = false;
+
+  function update(){
+    ticking = false;
+    const r = wrap.getBoundingClientRect();
+    const anchor = window.innerHeight * 0.6;          // ligne de référence à 60% de l'écran
+    const p = Math.min(Math.max((anchor - r.top) / r.height, 0), 1);
+    fill.style.height = (p * 100) + '%';
+    // un nœud s'allume quand le remplissage l'a dépassé
+    const fillY = r.top + p * r.height;
+    items.forEach(it => {
+      const node = it.querySelector('.tf-node');
+      const ny = node.getBoundingClientRect().top + node.offsetHeight/2;
+      it.classList.toggle('on', ny <= fillY + 2);
+    });
+  }
+  function onScroll(){ if(!ticking){ ticking = true; requestAnimationFrame(update); } }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', update);
+  update();
+
+  // filtre par mois
+  const filter = document.getElementById('tf-filter');
+  const caps   = [...wrap.querySelectorAll('.tf-cap')];
+  const empty  = document.getElementById('tf-empty');
+  if(filter){
+    filter.addEventListener('click', e => {
+      const btn = e.target.closest('.tf-fbtn');
+      if(!btn) return;
+      const m = btn.dataset.m;
+      filter.querySelectorAll('.tf-fbtn').forEach(b => b.classList.toggle('on', b===btn));
+      let visible = 0;
+      items.forEach(it => {
+        const show = (m === 'all') || (it.dataset.month === m);
+        it.classList.toggle('hide', !show);
+        if(show) visible++;
+      });
+      // ré-alterne gauche/droite parmi les cartes visibles
+      let k = 0;
+      items.forEach(it => {
+        if(it.classList.contains('hide')) return;
+        it.classList.toggle('left',  k % 2 === 0);
+        it.classList.toggle('right', k % 2 === 1);
+        k++;
+      });
+      // repères de début/fin et axe seulement en vue complète
+      caps.forEach(c => c.style.display = (m === 'all') ? '' : 'none');
+      wrap.querySelector('.tf-axis').style.display = (m === 'all') ? '' : 'none';
+      if(empty) empty.style.display = (visible === 0) ? 'block' : 'none';
+      requestAnimationFrame(update);
+    });
+  }
+})();
+
+</script>
+</body>
+</html>
