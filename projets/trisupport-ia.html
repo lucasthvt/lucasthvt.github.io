@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TriSupport IA — Lucas Thevenet</title>
+  <meta name="description" content="TriSupport IA : classement automatique de demandes de support informatique avec un modèle de langage local (Ollama, Qwen3 8B), FastAPI et Docker.">
+  <meta name="author" content="Lucas Thevenet">
+  <link rel="canonical" href="https://lucasthvt.github.io/projets/trisupport-ia.html">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <meta name="color-scheme" content="light dark">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:site_name" content="Lucas Thevenet — Portfolio">
+  <meta property="og:title" content="TriSupport IA — Lucas Thevenet">
+  <meta property="og:description" content="TriSupport IA : classement automatique de demandes de support informatique avec un modèle de langage local (Ollama, Qwen3 8B), FastAPI et Docker.">
+  <meta property="og:url" content="https://lucasthvt.github.io/projets/trisupport-ia.html">
+  <meta property="og:image" content="https://lucasthvt.github.io/og-image.png">
+  <meta property="og:image:alt" content="Lucas Thevenet, étudiant BTS SIO SLAM, recherche un stage de développement full-stack">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+  <nav class="site-nav" aria-label="Navigation principale">
+    <div class="container">
+      <a class="brand" href="../index.html">Lucas Thevenet</a>
+      <ul>
+        <li><a href="../index.html#rivalys">Rivalys</a></li>
+        <li><a href="../index.html#projets">Projets</a></li>
+        <li><a href="../index.html#competences">Compétences</a></li>
+        <li><a href="../index.html#parcours">Parcours</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+  <main id="contenu">
+    <div class="container">
+      <a class="crumb" href="../index.html#projets">← Tous les projets</a>
+      <header class="page-hero">
+        <h1>TriSupport IA</h1>
+        <p class="lead">Une application qui classe et priorise automatiquement des demandes de support informatique en JSON, avec un modèle de langage qui tourne en local.</p>
+        <ul class="tags" aria-label="Technologies"><li>Python</li><li>FastAPI</li><li>Docker Compose</li><li>Ollama (Qwen3 8B)</li><li>Cloudflare Tunnel</li></ul>
+      </header>
+      <div class="actions">
+        <a class="btn btn-primary" href="https://github.com/lucasthvt/projet-ia-lucas" target="_blank" rel="noopener">Voir le code<span class="sr-only"> de TriSupport IA</span></a>
+      </div>
+      <div class="facts">
+        <div class="fact"><strong>12</strong><span>cas de test, dont 5 pièges</span></div>
+        <div class="fact"><strong>100 %</strong><span>de réussite avec qwen3:8b (36/36)</span></div>
+        <div class="fact"><strong>9,3 s</strong><span>temps de réponse médian</span></div>
+        <div class="fact"><strong>Local</strong><span>modèle exécuté avec Ollama sur ma machine</span></div>
+      </div>
+      <p class="note">Projet réalisé dans le cadre du BTS SIO option SLAM (octobre 2026). L'organisation décrite ci-dessous est fictive.</p>
+      <section class="prose" aria-labelledby="contexte">
+        <h2 id="contexte">Le besoin</h2>
+        <p>L'Atelier Numérique du Pilat (organisation fictive) gère le parc informatique de six petites mairies et de leurs écoles. Les deux techniciens reçoivent toutes les demandes dans une seule boîte mail, sans tri : un simple « merci » arrive au même niveau qu'une panne qui bloque toute une mairie.</p>
+        <p>L'application classe et priorise automatiquement chaque message en JSON, pour que les techniciens traitent d'abord les urgences.</p>
+        <h3>Ce que l'application ne fait pas</h3>
+        <ul>
+          <li>Elle ne répond pas à l'utilisateur : elle produit uniquement un JSON de tri.</li>
+          <li>Elle ne résout pas l'incident : elle ne fait que classer et prioriser.</li>
+          <li>Elle ne traite pas les pièces jointes ni les images.</li>
+        </ul>
+      </section>
+      <section class="prose" aria-labelledby="modele">
+        <h2 id="modele">Le modèle et la machine</h2>
+        <p>Le modèle retenu est <strong>qwen3:8b</strong>, exécuté en local avec Ollama sur un Mac M4 avec 16 Go de mémoire unifiée. Il occupe environ 6 Go, ce qui laisse de la place pour macOS, Docker et les conteneurs. Il tourne à environ 6,5 tokens par seconde. Je l'ai comparé à <strong>qwen2.5:3b</strong>.</p>
+      </section>
+      <section class="prose" aria-labelledby="mesures">
+        <h2 id="mesures">Les mesures</h2>
+        <p>Un jeu de 12 cas, dont les 5 pièges du sujet (remerciement, hameçonnage, deux problèmes, changement de priorité, message vide), deux cas hors sujet et une tentative de détournement.</p>
+        <div class="table-wrap"><table>
+          <thead><tr><th scope="col"></th><th scope="col">qwen3:8b (retenu)</th><th scope="col">qwen2.5:3b (comparé)</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Réussite (12 cas × 3 essais)</th><td><strong>100 %</strong> (36/36)</td><td><strong>67 %</strong> (24/36)</td></tr>
+            <tr><th scope="row">Temps de réponse médian</th><td><strong>9,3 s</strong></td><td><strong>3,2 s</strong></td></tr>
+          </tbody>
+        </table></div>
+        <p style="margin-top:1rem">Le petit modèle est 3 fois plus rapide, mais il rate des priorités : il ne compte pas les personnes concernées par une panne et met tout en P3, et il passe à côté d'un cas d'hameçonnage. J'ai donc gardé qwen3:8b.</p>
+      </section>
+      <section class="prose" aria-labelledby="difficultes">
+        <h2 id="difficultes">Les difficultés rencontrées</h2>
+        <ul>
+          <li><strong>Temps de réponse trop long :</strong> Qwen3 générait une longue chaîne de réflexion avant de répondre. Ajouter <code>/no_think</code> dans le message utilisateur (et pas dans le prompt système, où il est ignoré) a fait passer le temps médian de 49 s à environ 9 s.</li>
+          <li><strong>Conteneur Docker « unhealthy » :</strong> l'application pointait sur <code>localhost</code>, qui désigne le conteneur lui-même. Il faut utiliser <code>host.docker.internal</code> pour joindre Ollama sur la machine hôte.</li>
+        </ul>
+      </section>
+      <section class="prose" aria-labelledby="securite">
+        <h2 id="securite">La sécurité</h2>
+        <ul>
+          <li><strong>URL publique :</strong> code d'accès et limite de 10 requêtes par minute et par visiteur.</li>
+          <li><strong>Ollama non exposé :</strong> seul le conteneur applicatif lui parle, aucun port ouvert vers l'extérieur.</li>
+          <li><strong>Détournement des consignes :</strong> consigne système stricte et un cas de test dédié.</li>
+          <li><strong>Données personnelles :</strong> consigne « résumé sans nom de personne », vérifiée à la main sur les 12 cas.</li>
+          <li><strong>Secrets :</strong> le fichier <code>.env</code> n'est jamais versionné, seul <code>.env.example</code> l'est.</li>
+        </ul>
+      </section>
+      <section class="prose" aria-labelledby="ia">
+        <h2 id="ia">Usage d'un assistant IA</h2>
+        <p>J'ai utilisé un assistant IA (Claude) pour une première version du prompt, le débogage Docker et la structure du README. J'ai renforcé les règles du prompt après avoir observé des échecs, corrigé un test trop strict et refusé les suggestions qui simplifiaient trop les règles de priorité ou qui supprimaient des cas pour améliorer le score.</p>
+      </section>
+      <section class="prose" aria-labelledby="prod">
+        <h2 id="prod">Mise en production</h2>
+        <p>L'application est conteneurisée avec Docker Compose et exposée en HTTPS par un tunnel Cloudflare.</p>
+      </section>
+      <nav class="pager" aria-label="Autres projets">
+        <a class="prev" href="rivalys.html"><small>← Projet précédent</small>Rivalys</a>
+        <a class="next" href="maquette-cti.html"><small>Projet suivant →</small>Maquette du rapport d'activité (stage CTI)</a>
+      </nav>
+      <p style="margin-top:2rem"><a class="btn btn-primary" href="../index.html#contact">Me contacter</a>
+      <a class="btn" href="../CV_Lucas_Thevenet.pdf" download>Télécharger mon CV</a></p>
+    </div>
+  </main>
+  <footer><div class="container"><p>© 2026 Lucas Thevenet · <a href="../index.html">Retour à l'accueil</a></p></div></footer>
+</body>
+</html>
