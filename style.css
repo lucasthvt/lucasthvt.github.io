@@ -187,3 +187,35 @@ footer { margin-top: 4rem; padding: 2rem 0; border-top: 1px solid var(--border);
 .timeline ul { margin: .4rem 0 0; padding-left: 1.1rem; }
 .timeline ul li { padding: 0; position: static; list-style: disc; }
 .timeline ul li::before { content: none; }
+
+/* ===== Cartes projets cliquables ===== */
+.project-card { display: flex; flex-direction: column; }
+.project-card p { flex: 1; }
+.project-card .actions { margin-top: .25rem; }
+.project-card h3 a { color: var(--text); text-decoration: none; }
+.project-card h3 a:hover { color: var(--accent); text-decoration: underline; }
+.featured { border-left: 4px solid var(--accent); }
+.facts { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); margin: 1.25rem 0; }
+.fact { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: .9rem 1rem; }
+.fact strong { display: block; font-size: 1.6rem; line-height: 1.2; color: var(--accent); }
+.fact span { font-size: .9rem; color: var(--muted); }
+
+/* ===== Pages projet ===== */
+.crumb { display: inline-block; margin: 2rem 0 .5rem; text-decoration: none; font-weight: 600; }
+.crumb:hover { text-decoration: underline; }
+.page-hero { padding: .5rem 0 1rem; }
+.page-hero .lead { font-size: 1.15rem; color: var(--muted); max-width: 42rem; }
+.prose { padding-top: 2rem; }
+.prose h2 { margin-top: 0; padding-top: 0; border-bottom: 2px solid var(--border); padding-bottom: .35rem; }
+.prose ul, .prose ol { padding-left: 1.25rem; }
+.prose li { margin-bottom: .4rem; }
+.table-wrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); }
+th, td { text-align: left; padding: .6rem .8rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+th { background: var(--bg); }
+.pager { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); margin-top: 3rem; }
+.pager a { display: block; padding: 1rem 1.25rem; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); text-decoration: none; }
+.pager a:hover { border-color: var(--accent); }
+.pager small { display: block; color: var(--muted); }
+.pager .next { text-align: right; }
+.note { background: var(--surface); border: 1px dashed var(--border); border-radius: var(--radius); padding: .8rem 1.1rem; color: var(--muted); }

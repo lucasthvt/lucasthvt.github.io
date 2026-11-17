@@ -56,43 +56,20 @@
     </header>
 
     <section id="rivalys" aria-labelledby="rivalys-titre">
-      <div class="container case">
-        <h2 id="rivalys-titre">Rivalys — étude de cas</h2>
-        <p><strong>Rivalys</strong> est un outil payant qui compare un SaaS à son plus gros concurrent, à partir de deux URL.</p>
-        <ul class="tags" aria-label="Technologies">
-          <li>Next.js 16</li><li>React 19</li><li>TypeScript</li><li>Tailwind CSS</li><li>Supabase (Postgres, Auth)</li><li>Row Level Security</li><li>Stripe</li><li>API Claude</li><li>Python</li>
-        </ul>
-
-        <div class="card">
-          <h3>Ma solution</h3>
-          <p>À partir de deux URL, Rivalys relève <strong>4 familles de faits</strong> : tarification, positionnement, avis publics et présence sociale. Il applique <strong>9 règles de détection</strong> classées par priorité, calcule un <strong>score sur 100</strong> et transforme chaque écart en <strong>tâche</strong> à réaliser.</p>
-
-          <h3>Les choix techniques</h3>
-          <ul>
-            <li><strong>Row Level Security :</strong> chaque table est protégée par des politiques RLS filtrées sur l'identité de l'utilisateur. Chacun ne voit que ses propres données, la règle étant appliquée au niveau de la base.</li>
-            <li><strong>Règles de détection codées en dur :</strong> les écarts ne sont pas générés librement par un modèle de langage. Chaque action proposée découle d'une comparaison factuelle et explicite. L'IA sert uniquement à extraire les données des pages, côté serveur.</li>
-            <li><strong>Un crawler Python dédié</strong> pour récupérer les pages d'accueil et de tarifs, avec rejet des adresses privées (protection SSRF) et revalidation à chaque redirection.</li>
-            <li><strong>Paiement Stripe</strong> : signature des webhooks vérifiée, et colonnes de facturation non modifiables depuis le navigateur, pour qu'un compte ne puisse pas s'attribuer un abonnement payant.</li>
-            <li><strong>Hébergement :</strong> déploiement sur Vercel, connecté au dépôt et à Supabase.</li>
+      <div class="container">
+        <h2 id="rivalys-titre">Projet principal : Rivalys</h2>
+        <article class="card featured">
+          <p><strong>Rivalys</strong> est un outil payant qui compare un SaaS à son plus gros concurrent, à partir de deux URL. Il relève <strong>4 familles de faits</strong> (tarification, positionnement, avis publics, présence sociale), applique <strong>9 règles de détection</strong> classées par priorité, calcule un <strong>score sur 100</strong> et transforme chaque écart en <strong>tâche</strong>.</p>
+          <p>La sécurité repose sur la Row Level Security : chaque utilisateur ne voit que ses propres données. Projet réalisé en solo, de la conception à la mise en production.</p>
+          <ul class="tags" aria-label="Technologies">
+            <li>Next.js 16</li><li>React 19</li><li>TypeScript</li><li>Supabase</li><li>Row Level Security</li><li>Stripe</li><li>API Claude</li><li>Python</li><li>Vercel</li>
           </ul>
-
-          <h3>Les difficultés rencontrées</h3>
-          <p>Le développement en local s'est déroulé sans blocage majeur. La vraie difficulté a été le <strong>passage du local à la production</strong>, plus complexe que prévu : il faut faire fonctionner ensemble plusieurs services (nom de domaine, certificat TLS, hébergement Vercel, base Supabase) alors que tout marchait déjà sur ma machine.</p>
-
-          <h3>Ce que j'ai appris</h3>
-          <p>Rivalys m'a fait parcourir le déroulement complet d'un SaaS web, de A à Z :</p>
-          <ul>
-            <li>développer en local, tester, ajuster les prompts, puis mettre en production ;</li>
-            <li>acheter un nom de domaine et mettre en place le certificat TLS ;</li>
-            <li>connecter l'application à Vercel (hébergement) et à Supabase (base de données et authentification).</li>
-          </ul>
-
-          <h3>Mon rôle</h3>
-          <p>Projet réalisé en solo, de la conception à la mise en production.</p>
-        </div>
-
-        <p class="actions" style="margin-top:1.25rem"><a class="btn btn-primary" href="https://rivalys.com" target="_blank" rel="noopener">Voir Rivalys en ligne</a>
-        <a class="btn" href="https://github.com/lucasthvt/rivalys" target="_blank" rel="noopener">Voir le code<span class="sr-only"> de Rivalys</span></a></p>
+          <div class="actions">
+            <a class="btn btn-primary" href="projets/rivalys.html">Lire l'étude de cas<span class="sr-only"> de Rivalys</span></a>
+            <a class="btn" href="https://rivalys.com" target="_blank" rel="noopener">Voir Rivalys en ligne</a>
+            <a class="btn" href="https://github.com/lucasthvt/rivalys" target="_blank" rel="noopener">Voir le code<span class="sr-only"> de Rivalys</span></a>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -100,13 +77,27 @@
       <div class="container">
         <h2 id="projets-titre">Autres projets</h2>
         <div class="grid">
-          <article class="card">
-            <h3>TriSupport IA</h3>
+          <article class="card project-card">
+            <h3><a href="projets/trisupport-ia.html">TriSupport IA</a></h3>
             <ul class="tags" aria-label="Technologies">
               <li>Python</li><li>FastAPI</li><li>Docker Compose</li><li>Ollama (Qwen3 8B)</li><li>Cloudflare Tunnel</li>
             </ul>
             <p>Application qui classe automatiquement des demandes de support informatique en JSON (catégorie, priorité, résumé), avec un modèle de langage local. Conteneurisée avec Docker Compose et exposée en HTTPS via un tunnel. 12 cas de test, 100 % de réussite avec le modèle retenu.</p>
-            <a class="btn" href="https://github.com/lucasthvt/projet-ia-lucas" target="_blank" rel="noopener">Voir le code<span class="sr-only"> de TriSupport IA</span></a>
+            <div class="actions">
+              <a class="btn btn-primary" href="projets/trisupport-ia.html">Voir le projet<span class="sr-only"> TriSupport IA</span></a>
+              <a class="btn" href="https://github.com/lucasthvt/projet-ia-lucas" target="_blank" rel="noopener">Code<span class="sr-only"> de TriSupport IA</span></a>
+            </div>
+          </article>
+          <article class="card project-card">
+            <h3><a href="projets/maquette-cti.html">Maquette du rapport d'activité (stage CTI)</a></h3>
+            <ul class="tags" aria-label="Technologies">
+              <li>HTML</li><li>CSS</li><li>JavaScript</li>
+            </ul>
+            <p>Maquette du site web du rapport d'activité, réalisée pendant mon stage au CTI Saint-Étienne. Les noms et les chiffres sont volontairement masqués (« XXX »).</p>
+            <div class="actions">
+              <a class="btn btn-primary" href="projets/maquette-cti.html">Voir le projet<span class="sr-only"> maquette du rapport d'activité</span></a>
+              <a class="btn" href="https://github.com/lucasthvt/cti-saint-etienne" target="_blank" rel="noopener">Code<span class="sr-only"> de la maquette</span></a>
+            </div>
           </article>
         </div>
       </div>
@@ -155,7 +146,7 @@
         <ul class="timeline">
           <li><span class="date">Mai – juin 2026</span><strong>Stagiaire en développement web, CTI Saint-Étienne</strong>
             <ul>
-              <li>Création du site web du rapport d'activité 2025</li>
+              <li>Création du site web du rapport d'activité 2025 (<a href="projets/maquette-cti.html">voir la maquette</a>)</li>
               <li>Création d'applications web pour les employés</li>
               <li>Apprentissage de Symfony</li>
             </ul>

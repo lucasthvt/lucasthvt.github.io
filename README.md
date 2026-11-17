@@ -8,7 +8,7 @@ Portfolio personnel publié avec GitHub Pages : https://lucasthvt.github.io
 
 - Accroche, liens GitHub / LinkedIn / email, CV téléchargeable
 - Étude de cas : Rivalys
-- Autre projet : TriSupport IA
+- Autres projets : TriSupport IA, maquette du rapport d'activité (stage CTI)
 - Compétences, parcours, contact
 
 ## Choix techniques
